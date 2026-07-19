@@ -1,0 +1,71 @@
+site_name: 开发者知识库
+site_description: 编程基础、Git、调试与开发工具链指南
+site_author: qiziang312
+site_url: ''
+
+# 文档目录（默认就是 docs，可省略）
+docs_dir: docs
+
+# 生成的静态站点输出目录
+site_dir: site
+
+# ═══════════════════════════════════════
+# 主题配置
+# ═══════════════════════════════════════
+theme:
+  name: material           # 使用 mkdocs-material 主题
+  language: zh             # 中文界面
+  features:
+    - navigation.tabs      # 顶部显示导航标签页
+    - navigation.sections  # 侧边栏目录自动折叠分组
+    - navigation.top       # 页面右下角「回到顶部」按钮
+    - search.suggest       # 搜索时显示输入建议
+    - search.highlight     # 搜索结果中高亮匹配关键词
+  palette:
+    # 亮色配色
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换至暗色模式
+    # 暗色配色
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换至亮色模式
+
+# ═══════════════════════════════════════
+# 导航结构 —— 决定左侧菜单长什么样
+# ═══════════════════════════════════════
+nav:
+  - 首页: index.md
+  - 开发指南:
+      - 编程基础入门指南: mkdocs_sub.git/docs/01-编程基础入门指南.md
+      - Git 版本控制实用技巧: mkdocs_sub.git/docs/02-Git版本控制实用技巧.md
+      - 高效代码调试方法: mkdocs_sub.git/docs/03-高效代码调试方法.md
+      - 开发者工具链与工作流优化: mkdocs_sub.git/docs/04-开发者工具链与工作流优化.md
+
+# ═══════════════════════════════════════
+# Markdown 扩展 —— 丰富你的 .md 写作能力
+# ═══════════════════════════════════════
+markdown_extensions:
+  - admonition             # 提示框：!!! note / !!! warning / !!! danger 等
+  - codehilite             # 基础代码高亮
+  - toc:
+      permalink: true      # 每个标题旁加一个 # 锚点链接
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences   # 允许代码块嵌套（在 admonition 里放代码块）
+  - pymdownx.inlinehilite  # 行内代码语法高亮 # `print("hello")`
+  - pymdownx.snippets      # 用 --8<-- 语法引用外部文件作为代码示例
+  - pymdownx.tabbed:
+      alternate_style: true # 支持 === "标题" 创建选项卡
+
+# ═══════════════════════════════════════
+# 插件
+# ═══════════════════════════════════════
+plugins:
+  - search                 # 全文搜索（material 主题自带）

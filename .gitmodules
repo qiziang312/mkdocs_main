@@ -1,3 +1,6 @@
 [submodule "docs/mkdocs_sub.git"]
 	path = docs/mkdocs_sub.git
 	url = git@github.com:qiziang312/mkdocs_sub.git
+[submodule "mkdocs_sub"]
+	path = mkdocs_sub
+	url = git@github.com:qiziang312/mkdocs_sub.git
