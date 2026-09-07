@@ -1,7 +1,7 @@
 site_name: 开发者知识库
 site_description: 编程基础、Git、调试与开发工具链指南
 site_author: qiziang312
-site_url: ''
+site_url: 'https://qiziang312.github.io/mkdocs_main/'
 
 # 文档目录（默认就是 docs，可省略）
 docs_dir: docs
@@ -47,6 +47,10 @@ nav:
       - Git 版本控制实用技巧: mkdocs_sub.git/docs/02-Git版本控制实用技巧.md
       - 高效代码调试方法: mkdocs_sub.git/docs/03-高效代码调试方法.md
       - 开发者工具链与工作流优化: mkdocs_sub.git/docs/04-开发者工具链与工作流优化.md
+      - maven简介: mkdocs_sub.git/docs/Maven简介.md
+      - maven教程: mkdocs_sub.git/docs/Maven教程.md
+      - Nexus 私服 (Maven 配套工具): mkdocs_sub.git/docs/Nexus 私服 (Maven 配套工具).md
+      - MySQL shell: mkdocs_sub.git/docs/MySQL shell.md
 
 # ═══════════════════════════════════════
 # Markdown 扩展 —— 丰富你的 .md 写作能力
