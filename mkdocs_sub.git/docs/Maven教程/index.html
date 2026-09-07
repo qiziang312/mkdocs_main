@@ -1,0 +1,1144 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="编程基础、Git、调试与开发工具链指南">
+      
+      
+        <meta name="author" content="qiziang312">
+      
+      
+        <link rel="canonical" href="https://qiziang312.github.io/mkdocs_main/mkdocs_sub.git/docs/Maven%E6%95%99%E7%A8%8B/">
+      
+      
+        <link rel="prev" href="../Maven%E7%AE%80%E4%BB%8B/">
+      
+      
+        <link rel="next" href="../Nexus%20%E7%A7%81%E6%9C%8D%EF%BC%88Maven%20%E9%85%8D%E5%A5%97%E5%B7%A5%E5%85%B7%EF%BC%89/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>maven教程 - 开发者知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hello" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="开发者知识库" class="md-header__button md-logo" aria-label="开发者知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            开发者知识库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              maven教程
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至亮色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" class="md-tabs__link">
+          
+  
+  
+  开发指南
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="开发者知识库" class="md-nav__button md-logo" aria-label="开发者知识库" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    开发者知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发指南
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发指南
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编程基础入门指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git 版本控制实用技巧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-%E9%AB%98%E6%95%88%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高效代码调试方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E9%93%BE%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发者工具链与工作流优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Maven%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    maven简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    maven教程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Nexus%20%E7%A7%81%E6%9C%8D%EF%BC%88Maven%20%E9%85%8D%E5%A5%97%E5%B7%A5%E5%85%B7%EF%BC%89/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nexus 私服 (Maven 配套工具)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL%20shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MySQL shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="hello">HELLO！！！<a class="headerlink" href="#hello" title="Permanent link">&para;</a></h1>
+<h1 id="manven">欢迎来学Manven<a class="headerlink" href="#manven" title="Permanent link">&para;</a></h1>
+<p>Java语法
+git命令
+Maven   &lt;——目前学到这了欧
+Nexus 私服
+spring
+mySQL
+redis
+苍穹外卖
+黑马点评</p>
+<h1 id="maven">一、Maven下载<a class="headerlink" href="#maven" title="Permanent link">&para;</a></h1>
+<p>Maven下载网址</p>
+<p><a href="https://maven.apache.org/download.cgi#CurrentMaven">Download Apache Maven – Maven</a></p>
+<p>下载最新版：
+    <a href="https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz">apache-maven-3.9.16-bin.tar.gz</a></p>
+<p>1.点击浏览器右上下载，打开文件，下载完成之后打开文件所在位置，7-zip解压获得apache-maven-3.9.16文件夹，在C盘中新建tools文件夹，并把apache-maven-3.9.16粘贴进来</p>
+<p>2.打开系统环境变量，（需要以管理员身份运行）点击环境变量（N），看系统变量（S），点击新建</p>
+<p>变量名：MAVEN_HOME
+变量值：C:\tools\apache-maven-3.9.16
+        ps：apache-maven-3.9.16的绝对路径</p>
+<p>3.在系统变量找到Path并点击，点击，之后点新建
+写C:\tools\apache-maven-3.9.16\bin</p>
+<p>4.powershell运行
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">mvn</span> <span class="n">-v</span>
+</code></pre></div>
+成功后会显示
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">z005banx</span><span class="p">&gt;</span> <span class="n">mvn</span> <span class="n">-v</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Apache</span> <span class="n">Maven</span> <span class="n">3</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">16</span> <span class="p">(</span><span class="n">2bdd9fddda4b155ebf8000e807eb73fd829a51d5</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">Maven</span> <span class="n">home</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">tools</span><span class="p">\</span><span class="n">apache-maven</span><span class="p">-</span><span class="n">3</span><span class="p">.</span><span class="n">9</span><span class="p">.</span><span class="n">16</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">Java</span> <span class="n">version</span><span class="p">:</span> <span class="n">26</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">,</span> <span class="n">vendor</span><span class="p">:</span> <span class="n">Oracle</span> <span class="n">Corporation</span><span class="p">,</span> <span class="n">runtime</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">Program</span> <span class="n">Files</span><span class="p">\</span><span class="n">Java</span><span class="p">\</span><span class="n">jdk</span><span class="p">-</span><span class="n">26</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">Default</span> <span class="n">locale</span><span class="p">:</span> <span class="n">zh_CN</span><span class="p">,</span> <span class="n">platform</span> <span class="n">encoding</span><span class="p">:</span> <span class="n">UTF</span><span class="p">-</span><span class="n">8</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">OS</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;windows 11&quot;</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="s2">&quot;10.0&quot;</span><span class="p">,</span> <span class="n">arch</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span><span class="p">,</span> <span class="n">family</span><span class="p">:</span> <span class="s2">&quot;windows&quot;</span>
+</code></pre></div></p>
+<h1 id="idea">二、下载IDEA<a class="headerlink" href="#idea" title="Permanent link">&para;</a></h1>
+<p>IDEA下载网址
+<a href="https://www.jetbrains.com.cn/idea/download/?section=windows">下载 IntelliJ IDEA</a></p>
+<h1 id="maven_1">三、配置MAVEN<a class="headerlink" href="#maven_1" title="Permanent link">&para;</a></h1>
+<h2 id="1">1、打开文件<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>在idea里打开apache-maven-3.9.16并找到settings.xml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>apache-maven-3.9.16  C:\tools\apache-maven-3.9.16
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── .idea
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── bin
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── boot
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── conf
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│   ├── logging
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│   ├── settings.xml    &lt;----打开这个文件
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│   └── toolchains.xml  
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>├── lib
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>├── LICENSE
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>├── NOTICE
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>└── README.txt
+</code></pre></div></p>
+<h2 id="2settingsxml">2、修改settings.xml<a class="headerlink" href="#2settingsxml" title="Permanent link">&para;</a></h2>
+<p>在55行左右空白部分粘贴如下代码:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;localRepository&gt;</span>C:\tools\maven_repository<span class="nt">&lt;/localRepository&gt;</span>
+</code></pre></div>
+<h2 id="3mirror">3.配置mirror镜像仓库<a class="headerlink" href="#3mirror" title="Permanent link">&para;</a></h2>
+<p>147-173行，照下面配置
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">&lt;mirrors&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="cm">&lt;!-- </span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="cm">   此处为一大堆注释</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="cm">   此处为一大堆注释</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="cm">   此处为一大堆注释 </span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="cm">   --&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nt">&lt;mirror&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">&lt;id&gt;</span>maven-default-http-blocker<span class="nt">&lt;/id&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">&lt;mirrorOf&gt;</span>external:http:*<span class="nt">&lt;/mirrorOf&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nt">&lt;name&gt;</span>Pseudo<span class="w"> </span>repository<span class="w"> </span>to<span class="w"> </span>mirror<span class="w"> </span>external<span class="w"> </span>repositories<span class="w"> </span>initially<span class="w"> </span>using<span class="w"> </span>HTTP.<span class="nt">&lt;/name&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nt">&lt;url&gt;</span>http://0.0.0.0/<span class="nt">&lt;/url&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nt">&lt;blocked&gt;</span>true<span class="nt">&lt;/blocked&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="nt">&lt;/mirror&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="nt">&lt;mirror&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nt">&lt;id&gt;</span>aliyunmaven<span class="nt">&lt;/id&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="nt">&lt;name&gt;</span>阿里云公共Maven仓库<span class="nt">&lt;/name&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="nt">&lt;url&gt;</span>https://maven.aliyun.com/repository/public<span class="nt">&lt;/url&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="nt">&lt;mirrorOf&gt;</span>*<span class="nt">&lt;/mirrorOf&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="nt">&lt;/mirror&gt;</span><span class="w">  </span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="nt">&lt;/mirrors&gt;</span>
+</code></pre></div></p>
+<h2 id="4profiles">4.配置profiles<a class="headerlink" href="#4profiles" title="Permanent link">&para;</a></h2>
+<p>196行左右找到profiles按以下文件配置
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">&lt;profiles&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">   </span><span class="cm">&lt;!-- </span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cm">   此处为一大堆注释</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="cm">   此处为一大堆注释</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="cm">   此处为一大堆注释 </span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="cm">   --&gt;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">   </span><span class="cm">&lt;!-- </span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="cm">   此处为一大堆注释</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="cm">   此处为一大堆注释</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="cm">   此处为一大堆注释 </span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="cm">   --&gt;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">   </span><span class="nt">&lt;profile&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">&lt;id&gt;</span>jdk-1.8<span class="nt">&lt;/id&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nt">&lt;activation&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">      </span><span class="nt">&lt;activeByDefault&gt;</span>true<span class="nt">&lt;/activeByDefault&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="nt">&lt;/activation&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nt">&lt;properties&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">      </span><span class="nt">&lt;maven.compiler.source&gt;</span>1.8<span class="nt">&lt;/maven.compiler.source&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">      </span><span class="nt">&lt;maven.compiler.target&gt;</span>1.8<span class="nt">&lt;/maven.compiler.target&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">      </span><span class="nt">&lt;maven.compiler.release&gt;</span>8<span class="nt">&lt;/maven.compiler.release&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">      </span><span class="nt">&lt;maven.compiler.encoding&gt;</span>UTF-8<span class="nt">&lt;/maven.compiler.encoding&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="nt">&lt;/properties&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">  </span><span class="nt">&lt;/profile&gt;</span><span class="w">  </span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="nt">&lt;/profiles&gt;</span>
+</code></pre></div></p>
+<h2 id="5activeprofiles">5.配置activeProfiles<a class="headerlink" href="#5activeprofiles" title="Permanent link">&para;</a></h2>
+<p>278行左右，在</profiles>下和</settings>上面按如下代码配置
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cm">&lt;!-- </span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="cm">此处为一堆注释</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="cm">此处为一堆注释</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="cm">--&gt;</span><span class="w">  </span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nt">&lt;activeProfiles&gt;</span><span class="w">  </span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="nt">&lt;activeProfile&gt;</span>jdk-1.8<span class="nt">&lt;/activeProfile&gt;</span><span class="w">  </span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nt">&lt;/activeProfiles&gt;</span><span class="w">  </span>
+</code></pre></div></p>
+<h1 id="_1">四、终端创建项目教学(可不做)<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>打开或新建一个空文件并运行如下命令：</p>
+<p>官方命令（CMD可运行）
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mvn<span class="w"> </span>archetype:generate<span class="w"> </span>-DgroupId<span class="o">=</span>com.mycompany.app<span class="w"> </span>-DartifactId<span class="o">=</span>my-app<span class="w"> </span>-DarchetypeArtifactId<span class="o">=</span>maven-archetype-quickstart<span class="w"> </span>-DarchetypeVersion<span class="o">=</span><span class="m">1</span>.5<span class="w"> </span>-DinteractiveMode<span class="o">=</span><span class="nb">false</span>
+</code></pre></div></p>
+<ol>
+<li><strong>-DgroupId</strong> 项目组织 / 包名，例：<code>com.my</code>，对应代码包路径</li>
+<li><strong>-DartifactId</strong> 项目名称，生成文件夹、最终 jar 包都以此命名</li>
+<li>
+<p><strong>-DarchetypeArtifactId</strong> 选择项目模板：</p>
+</li>
+<li>
+<p><code>maven-archetype-quickstart</code>：普通 Java 项目</p>
+</li>
+<li>
+<p><code>maven-archetype-webapp</code>：Java Web 网页项目</p>
+</li>
+<li>
+<p><strong>-DarchetypeVersion</strong> 模板版本，可省略，自动拉最新</p>
+</li>
+<li><strong>-DinteractiveMode=false</strong> 关闭交互式弹窗，一键静默生成项目</li>
+</ol>
+<p>修改后
+<code>com.demo</code>（包名）
+<code>demo1/web1</code>（项目名）</p>
+<p>***关键说明</p>
+<ul>
+<li>报错原因：PowerShell 会自动拆分 <code>-Dxxx=xxx</code> 格式参数，导致 Maven 收不到完整指令，识别不出是新建项目命令，强制校验 pom.xml 报错</li>
+<li><code>--%</code>：核心修复点，让 PowerShell 停止参数解析，原样把内容传给 Maven</li>
+<li><code>-B</code>：非交互批量模式，是新版 Maven 替代 <code>-DinteractiveMode=false</code> 的标准写法</li>
+<li><code>com.demo</code>（包名）</li>
+<li><code>demo1/web1</code>（项目名）</li>
+</ul>
+<p>CMD/Powershell通用
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mvn<span class="w"> </span>--%<span class="w"> </span>archetype:generate<span class="w"> </span>-B<span class="w"> </span>-DgroupId<span class="o">=</span>com.demo<span class="w"> </span>-DartifactId<span class="o">=</span>demo1<span class="w"> </span>-DarchetypeArtifactId<span class="o">=</span>maven-archetype-quickstart
+</code></pre></div>
+完成后会创建demo1文件夹</p>
+<h1 id="ideamaven">五、在IDEA中使用Maven<a class="headerlink" href="#ideamaven" title="Permanent link">&para;</a></h1>
+<p>1.创建工程
+IDEA中依次点击   文件   新建  项目 生成器 Maven Archetype</p>
+<p>名称                    demo
+位置                   ~\Desktop\deskproject\Maven
+Archetype          org.apache.maven.archetypes:maven-archetype-quickstart
+高级设置
+    组id                 com.study.maen
+    工件                 demo</p>
+<p>其他默认，点击创建</p>
+<p>2.
+IDEA中依次点击  文件 设置    构建、执行、部署   构建工具   Maven </p>
+<p>Manven 主路径（H）： 点击    ...    选择C:\tools\apache-maven-3.9.16文件夹  成功后显示（版本：3.9.16</p>
+<p>用户设置文件（S）：      点击重写选择C:\tools\apache-maven-3.9.16\conf\settings.xml</p>
+<p>其他默认点击确定</p>
+<h1 id="maven_2">六、Maven的生存周期和插件（讲解）<a class="headerlink" href="#maven_2" title="Permanent link">&para;</a></h1>
+<p>在IDEA里打开demo（刚刚创建的项目）点击右侧的  m  图标，并打开demo
+会看到：
+    声命周期
+    插件
+    依赖项
+    仓库</p>
+<h3 id="1_1">1.生命周期<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p><strong><em>！！！！！！！！！这是Maven的核心功能！！！！！！！！！！</em></strong></p>
+<p>点击任意阶段，<strong>前面所有阶段会自动顺序执行</strong> 例：点<code>package</code> → 自动执行 <code>validate→compile→test→package</code></p>
+<p><code>validate → compile → test → package → verify → install → deploy</code></p>
+<ol>
+<li>clean：单独生命周期，清空<code>target</code>编译文件夹</li>
+<li>validate：校验项目配置</li>
+<li>compile：编译 Java 源码</li>
+<li>test：执行单元测试</li>
+<li>package：打包为 jar 包</li>
+<li>verify：校验打包完整性</li>
+<li>install：安装到本地仓库</li>
+<li>deploy：推送至远程私服</li>
+<li>site：生成项目文档站点（极少使用）</li>
+</ol>
+<h3 id="2">2. 插件<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>生命周期只是<strong>执行流程框架，本身无功能</strong>，真正干活的是插件：
+<strong>点击生命周期------&gt;插件-------&gt;完成操作</strong></p>
+<h3 id="3">3.依赖项 &amp; 仓库<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>依赖项</strong>：当前项目引入的第三方包（图中 JUnit 测试依赖），在<code>pom.xml</code>里配置</li>
+<li>
+<p><strong>仓库</strong></p>
+</li>
+<li>
+<p>local：本地仓库路径 <code>C:\tools\maven_repository</code></p>
+</li>
+<li>central：Maven 官方中央远程仓库，用来下载插件和依赖 jar 包</li>
+</ol>
+<h1 id="manven_1">七、Manven坐标（讲解）<a class="headerlink" href="#manven_1" title="Permanent link">&para;</a></h1>
+<p>查看项目demo下的pom.xml文件，
+我们每需要一个想让Maven下载的jar包，就在这里加一个坐标
+可以看到：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cm">&lt;!-- 每一个第三方jar都靠这3个值唯一定位，叫Maven坐标 --&gt;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="cm">&lt;!-- groupId：组织/公司反向域名，相当于大文件夹 --&gt;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="cm">&lt;!-- artifactId：项目/组件名字，二级文件夹 --&gt;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="cm">&lt;!-- version：版本号，三级文件夹 --&gt;</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>3.8.1<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="cm">&lt;!-- scope：依赖生效范围 --&gt;</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<p>本地仓库根目录：<code>C:\tools\maven_repository</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>maven_repository/
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>└── junit/                       ← groupId = junit
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    └── junit/                   ← artifactId = junit
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        └── 3.8.1/               ← version = 3.8.1
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>            ├── junit-3.8.1.jar
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>            ├── junit-3.8.1.pom
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>            └── 其他校验文件
+</code></pre></div>
+<hr />
+<p><strong>scope</strong>标签
+表示依赖范围
+1. <strong>compile（默认）</strong> 编译、测试、运行都生效，打包打进最终文件，业务核心依赖用。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&lt;dependency&gt;
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    &lt;version&gt;5.3.27&lt;/version&gt;
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>&lt;/dependency&gt;
+</code></pre></div>
+<ol>
+<li><strong>test</strong> 仅单元测试代码可用，打包剔除，例 JUnit。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>&lt;scope&gt;test&lt;/scope&gt;
+</code></pre></div>
+<ol>
+<li><strong>provided</strong> 编译需要，服务器运行自带，不打包，例 servlet-api。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;scope&gt;provided&lt;/scope&gt;
+</code></pre></div>
+<ol>
+<li><strong>runtime</strong> 只运行 / 测试生效，编译不参与，例 JDBC 驱动。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>&lt;scope&gt;runtime&lt;/scope&gt;
+</code></pre></div>
+<ol>
+<li><strong>system</strong> 引用本地磁盘 jar，兼容性差，<strong>禁止使用</strong>。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>com.local<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>local-sdk<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="cm">&lt;!-- 固定写 system --&gt;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="nt">&lt;scope&gt;</span>system<span class="nt">&lt;/scope&gt;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="cm">&lt;!-- system必配：指向本机Jar绝对路径 --&gt;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="nt">&lt;systemPath&gt;</span>D:/lib/xxx-sdk.jar<span class="nt">&lt;/systemPath&gt;</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<p>之后点击刷新</p>
+<hr />
+<h1 id="_2">八、添加坐标<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>1.访问<a href="https://mvnrepository.com/">Maven Repository: Search/Browse/Explore</a>
+搜索要安装的依赖</p>
+<p>并复制坐标
+例：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="cm">&lt;!-- Source: https://mvnrepository.com/artifact/org.springframework/spring-context --&gt;</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>spring-context<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>7.0.8<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></p>
+<p>2.粘贴到pom.xml
+3.IDEA右侧 m 插件中，点击刷新</p>
+<h1 id="_3">九、依赖管理（讲解）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<h3 id="_4">一、依赖传递<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>引入 A 依赖，A 自带 B 依赖，Maven 自动把 B 也下载导入项目；优点简化代码，缺点冗余包多，容易版本打架。</p>
+<h3 id="_5">二、依赖冲突<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>多条传递路径引入<strong>同一个 jar 不同版本</strong>，JVM 加载混乱，程序报错。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>                A
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>               / \
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>              B   \
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>             /     \
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>     spring1.10   spring1.13                          &#39;\&#39;表示依赖
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>        |              |
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>     两个版本互相冲突，只能保留一个
+</code></pre></div></p>
+<p>Maven 自动仲裁两大底层规则</p>
+<ol>
+<li><strong>最短路径优先</strong> 哪个版本的存放位置距离当前项目层级更近，就选用哪个版本。</li>
+<li><strong>先声明优先</strong> 传递路径长度相同时，pom.xml 中先书写的依赖版本生效</li>
+</ol>
+<h3 id="_6">三、子父工程<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>root-parent/          # 父工程（只管理，不写代码）
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a> ├── pom.xml          # 父pom：统一锁版本、聚合子模块
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a> ├── user-module/     # 子模块1（业务模块）
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a> │   └── pom.xml
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a> └── order-module/    # 子模块2（业务模块）
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>     └── pom.xml
+</code></pre></div>
+<ol>
+<li><strong>继承（统一版本）</strong> 父工程锁定依赖版本，<strong>所有子工程不用写版本号</strong>，彻底解决依赖冲突。</li>
+<li><strong>聚合（批量构建）</strong> 父工程执行 <code>install/package</code>，<strong>所有子模块一次性打包、编译</strong>。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>                A
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>               / \
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>              B   C
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>             /     \
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>     spring1.10   spring1.13                &#39;\&#39;表示依赖
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>        |              |
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>     两个版本互相冲突，只能保留一个              
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>                A
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>               / \
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>              B   C
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>              \    \
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>   spring1.10  └── spring1.13                Maven按Maven 自动仲裁两大底层规则保留了spring1.13
+</code></pre></div>
+<p><strong>手动解决冲突</strong>
+Maven保留了spring1.13
+如果想留B的spring1.10</p>
+<p>方案 1：在 A 工程 pom 中对 C 依赖直接排除冲突包
+修改文件：<strong>A 工程 pom.xml</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="cm">&lt;!-- A依赖B，正常引入 --&gt;</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>xxx<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>B<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nt">&lt;/dependency&gt;</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="cm">&lt;!-- A依赖C，并排除C传递的spring-core 1.13 --&gt;</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>xxx<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>C<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="w">    </span><span class="nt">&lt;exclusions&gt;</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="w">        </span>这是核心代码：仓库中org/springframework/spring-core/下所有依赖将被排除
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="w">        </span><span class="nt">&lt;exclusion&gt;</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="w">            </span><span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w">            </span><span class="nt">&lt;artifactId&gt;</span>spring-core<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="w">        </span><span class="nt">&lt;/exclusion&gt;</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="w">    </span><span class="nt">&lt;/exclusions&gt;</span>
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>                A
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>               / \
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>              B   C
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>             /     \
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>     spring1.10   （已被排除，无传递）      传到A的只有1.10
+</code></pre></div>
+<hr />
+<p>方案 2：在 C 工程内部设置 optional=true（可选依赖）</p>
+<p>修改文件：<strong>C 工程 pom.xml</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>spring-core<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>1.13<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">    </span><span class="cm">&lt;!-- 标记为可选依赖，上层A不会自动传递继承 --&gt;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">    </span><span class="cm">&lt;!-- 这个依赖直供c自己使用 --&gt;</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">    </span><span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>                A
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>               / \
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>              B   C
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>             /     \
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>     spring1.10   （optional=true，不向上传递）
+</code></pre></div>
+<h3 id="_7">四、依赖继承<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><strong>前提</strong>：不论父模块是否为<strong>compile</strong>，子模块都会继承父模块的依赖</p>
+<p>父工程写在 <code>dependencyManagement</code> 里的东西，<strong>子模块不会自动继承</strong>。 
+子模块想用这个 jar，必须自己在<code>&lt;dependencies&gt;</code>手动写上 groupId 和 artifactId</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="cm">&lt;!--核心标签--&gt;</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nt">&lt;dependencyManagement&gt;</span><span class="w">                              </span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span><span class="nt">&lt;dependencies&gt;</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">    </span><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">      </span><span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">      </span><span class="nt">&lt;artifactId&gt;</span>spring-core<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">      </span><span class="nt">&lt;version&gt;</span>5.3.20<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">    </span><span class="nt">&lt;/dependency&gt;</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="w">  </span><span class="nt">&lt;/dependencies&gt;</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="cm">&lt;!--核心标签--&gt;</span><span class="w"> </span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="nt">&lt;/dependencyManagement&gt;</span><span class="w">                               </span>
+</code></pre></div>
+<h1 id="_8">十、属性定义<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<h2 id="2_1">2. 在哪定义属性<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h2>
+<p>在 pom 最上方 <code>properties</code> 标签里自定义：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">&lt;properties&gt;</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="cm">&lt;!-- 自定义一个属性，名字随便起，值写版本 --&gt;</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="nt">&lt;spring.version&gt;</span>5.3.20<span class="nt">&lt;/spring.version&gt;</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">    </span><span class="nt">&lt;junit.version&gt;</span>4.13.2<span class="nt">&lt;/junit.version&gt;</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nt">&lt;/properties&gt;</span>
+</code></pre></div>
+<h2 id="3_1">3. 用 ${} 调用<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>spring-core<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="cm">&lt;!-- 直接引用上面定义好的版本号 --&gt;</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>${spring.version}<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<h1 id="nexus">十一、Nexus仓库<a class="headerlink" href="#nexus" title="Permanent link">&para;</a></h1>
+<p>详见 Nexus 私服（Maven 配套工具）</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
