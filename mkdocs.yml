@@ -49,7 +49,7 @@ nav:
       - 开发者工具链与工作流优化: mkdocs_sub.git/docs/04-开发者工具链与工作流优化.md
       - maven简介: mkdocs_sub.git/docs/Maven简介.md
       - maven教程: mkdocs_sub.git/docs/Maven教程.md
-      - Nexus 私服 (Maven 配套工具): mkdocs_sub.git/docs/Nexus 私服(Maven 配套工具).md
+      - Nexus 私服 (Maven 配套工具): mkdocs_sub.git/docs/Nexus 私服（Maven 配套工具）.md
       - MySQL shell: mkdocs_sub.git/docs/MySQL shell.md
 
 # ═══════════════════════════════════════
